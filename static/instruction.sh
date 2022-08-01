@@ -24,7 +24,7 @@ cat << INST2
 | If you are running Windows 10 (1809) or later, you can simply use SSH |
 | from the command prompt. You can also use Putty, download it here:    |
 | https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html        |
-| Connect like this: ssh ncadmin@local.IP.of.this.server                |
+| Connect like this: ssh nextcloudusr@local.IP.of.this.server                |
 |                                                                       |
 | This server could be made maintenance free by using automatic updates |
 | with the built in update script. If you want automatic updates on     |

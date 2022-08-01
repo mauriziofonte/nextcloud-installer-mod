@@ -187,7 +187,7 @@ fi
 # Is this run as a pure root user?
 if is_root
 then
-    if [[ "$UNIXUSER" == "ncadmin" ]]
+    if [[ "$UNIXUSER" == "nextcloudusr" ]]
     then
         sleep 1
     else
@@ -204,7 +204,7 @@ We will do this for you when you hit OK."
        bash $SCRIPTS/adduser.sh "$SCRIPTS/nextcloud-startup-script.sh"
        rm $SCRIPTS/adduser.sh
        else
-           msg_box "You probably see this message if the user 'ncadmin' does not exist on the system,
+           msg_box "You probably see this message if the user 'nextcloudusr' does not exist on the system,
 which could be the case if you are running directly from the scripts on Github and not the VM.
 
 As long as the user you created have sudo permissions it's safe to continue.
@@ -349,7 +349,7 @@ bash $SCRIPTS/additional_apps.sh
 ### Change passwords
 # CLI USER
 UNIXUSER="$(getent group sudo | cut -d: -f4 | cut -d, -f1)"
-if [[ "$UNIXUSER" != "ncadmin" ]]
+if [[ "$UNIXUSER" != "nextcloudusr" ]]
 then
    print_text_in_color "$ICyan" "No need to change password for CLI user '$UNIXUSER' since it's not the default user."
 else
@@ -374,24 +374,24 @@ fi
 unset UNIX_PASSWORD
 
 # NEXTCLOUD USER
-NCADMIN=$(nextcloud_occ user:list | awk '{print $3}')
-if [[ "$NCADMIN" != "ncadmin" ]]
+nextcloudusr=$(nextcloud_occ user:list | awk '{print $3}')
+if [[ "$nextcloudusr" != "nextcloudusr" ]]
 then
-   print_text_in_color "$ICyan" "No need to change password for GUI user '$NCADMIN' since it's not the default user."
+   print_text_in_color "$ICyan" "No need to change password for GUI user '$nextcloudusr' since it's not the default user."
 else
     msg_box "We will now change the username and password for the Web Admin in Nextcloud."
     while :
     do
         NEWUSER=$(input_box_flow "Please type in the name of the Web Admin in Nextcloud.
-It must differ from the current one: $NCADMIN.\n\nThe only allowed characters for the username are:
+It must differ from the current one: $nextcloudusr.\n\nThe only allowed characters for the username are:
 
 'a-z', 'A-Z', '0-9', and '_.@-'")
         if [[ "$NEWUSER" == *" "* ]]
         then
             msg_box "Please don't use spaces."
-        elif [ "$NEWUSER" = "$NCADMIN" ]
+        elif [ "$NEWUSER" = "$nextcloudusr" ]
         then
-            msg_box "This username ($NCADMIN) is already in use. Please choose a different one."
+            msg_box "This username ($nextcloudusr) is already in use. Please choose a different one."
         # - has to be escaped otherwise it won't work.
         # Inspired by: https://unix.stackexchange.com/a/498731/433213
         elif [ "${NEWUSER//[A-Za-z0-9_.\-@]}" ]
@@ -422,10 +422,10 @@ This is used when you login to Nextcloud itself, i.e. on the web."
         fi
     done
     # Delete old user
-    if [[ "$NCADMIN" ]]
+    if [[ "$nextcloudusr" ]]
     then
-        print_text_in_color "$ICyan" "Deleting $NCADMIN..."
-        nextcloud_occ user:delete "$NCADMIN"
+        print_text_in_color "$ICyan" "Deleting $nextcloudusr..."
+        nextcloud_occ user:delete "$nextcloudusr"
         sleep 2
     fi
 fi

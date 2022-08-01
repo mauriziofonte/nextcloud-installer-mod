@@ -12,7 +12,7 @@ source /var/scripts/fetch_lib.sh
 DEBUG=0
 debug_mode
 
-if [[ $UNIXUSER != "ncadmin" ]]
+if [[ $UNIXUSER != "nextcloudusr" ]]
 then
     msg_box "Current user with sudo permissions is: $UNIXUSER.
 This script will set up everything with that user.
@@ -20,7 +20,7 @@ If the field after ':' is blank you are probably running as a pure root user.
 It's possible to install with root, but there will be minor errors.
 
 Please create a user with sudo permissions if you want an optimal installation.
-The preferred user is 'ncadmin'."
+The preferred user is 'nextcloudusr'."
     if ! yesno_box_yes "Do you want to create a new user?"
     then
         print_text_in_color "$ICyan" "Not adding another user..."

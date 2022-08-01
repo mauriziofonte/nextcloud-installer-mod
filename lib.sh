@@ -12,7 +12,7 @@ true
 ## Remove 2022-09-01
 NCPATH=/var/www/nextcloud
 NCPASS=nextcloud
-NCUSER=ncadmin
+NCUSER=nextcloudusr
 PGDB_USER=nextcloud_db_user
 if [ -f "$NCPATH"/config/config.php ]
 then
@@ -101,7 +101,7 @@ Confirm by pressing [ENTER]. Cancel by pressing [ESC]."
 MENU_GUIDE="Navigate with the [ARROW] keys and confirm by pressing [ENTER]. Cancel by pressing [ESC]."
 RUN_LATER_GUIDE="You can view this script later by running 'sudo bash $SCRIPTS/menu.sh'."
 # Repo
-GITHUB_REPO="https://raw.githubusercontent.com/nextcloud/vm/master"
+GITHUB_REPO="https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master"
 STATIC="$GITHUB_REPO/static"
 LETS_ENC="$GITHUB_REPO/lets-encrypt"
 APP="$GITHUB_REPO/apps"
@@ -117,7 +117,7 @@ GEOBLOCKDAT="$GITHUB_REPO/geoblockdat"
 NCREPO="https://download.nextcloud.com/server/releases"
 ISSUES="https://github.com/nextcloud/vm/issues"
 # User information
-GUIUSER=ncadmin
+GUIUSER=nextcloudusr
 GUIPASS=nextcloud
 UNIXUSER=$SUDO_USER
 UNIXUSER_PROFILE="/home/$UNIXUSER/.bash_profile"

@@ -47,6 +47,10 @@ elif [[ "$SYSVENDOR" == "QEMU" || "$SYSVENDOR" == "Red Hat" ]];
 then
     SYSNAME="KVM/QEMU"
     DEVTYPE=vdb
+elif [ "$SYSVENDOR" == "ASUSTeK COMPUTER INC." ];
+then
+    SYSNAME="DigitalOcean"
+    DEVTYPE=sda
 elif [ "$SYSVENDOR" == "DigitalOcean" ];
 then
     SYSNAME="DigitalOcean"

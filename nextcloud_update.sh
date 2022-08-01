@@ -11,7 +11,7 @@
 true
 SCRIPT_NAME="Nextcloud Update Script"
 # shellcheck source=lib.sh
-source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source <(curl -sL https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master/lib.sh)
 
 # Get all needed variables from the library
 ncdb
@@ -333,7 +333,7 @@ if asuspn51
 then
     # Upgrade Realtek drivers
     print_text_in_color "$ICyan" "Upgrading Realtek firmware..."
-    curl_to_dir https://raw.githubusercontent.com/nextcloud/vm/master/network/asusnuc pn51.sh "$SCRIPTS"
+    curl_to_dir https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master/network/asusnuc pn51.sh "$SCRIPTS"
     bash "$SCRIPTS"/pn51.sh
 fi
 
@@ -871,7 +871,7 @@ then
         print_text_in_color "$ICyan" "Doing pgdump of $NCDB..."
         check_command sudo -u postgres pg_dump -Fc "$NCDB"  > "$BACKUP"/nextclouddb.dump
         # Import:
-        # sudo -u postgres pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ncadmin -d nextcloud_db "$BACKUP"/nextclouddb.dump
+        # sudo -u postgres pg_restore --verbose --clean --no-acl --no-owner -h localhost -U nextcloudusr -d nextcloud_db "$BACKUP"/nextclouddb.dump
     else
         print_text_in_color "$ICyan" "Doing pgdump of all databases..."
         check_command sudo -u postgres pg_dumpall > "$BACKUP"/alldatabases.dump

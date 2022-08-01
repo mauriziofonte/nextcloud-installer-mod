@@ -24,7 +24,7 @@ root_check
 # Variables
 SMB_CONF="/etc/samba/smb.conf"
 SMB_GROUP="smb-users"
-PROHIBITED_NAMES=(global homes netlogon profiles printers print$ root ncadmin "$SMB_GROUP" plex pi-hole placeholder_for_last_space)
+PROHIBITED_NAMES=(global homes netlogon profiles printers print$ root nextcloudusr "$SMB_GROUP" plex pi-hole placeholder_for_last_space)
 WEB_GROUP="www-data"
 WEB_USER="www-data"
 MAX_COUNT=16

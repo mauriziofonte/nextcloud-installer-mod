@@ -78,10 +78,10 @@ then
     msg_box "It seems like the default dbname is not nextcloud_db.\nThis is not supported."
     exit 1
 fi
-# Check if dbuser is ncadmin
+# Check if dbuser is nextcloudusr
 if [ "$(nextcloud_occ config:system:get dbuser)" != "$PGDB_USER" ]
 then
-    msg_box "It seems like the default dbuser is not ncadmin.\nThis is not supported."
+    msg_box "It seems like the default dbuser is not nextcloudusr.\nThis is not supported."
     exit 1
 fi
 # Check if apache2 is installed
@@ -499,9 +499,9 @@ fi
 # Database
 print_text_in_color "$ICyan" "Restoring the database..."
 DB_PASSWORD=$(grep "dbpassword" "$SYSTEM_DIR/$NCPATH/config/config.php" | awk '{print $3}' | sed "s/[',]//g")
-sudo -Hiu postgres psql nextcloud_db -c "ALTER USER ncadmin WITH PASSWORD '$DB_PASSWORD'"
+sudo -Hiu postgres psql nextcloud_db -c "ALTER USER nextcloudusr WITH PASSWORD '$DB_PASSWORD'"
 sudo -Hiu postgres psql -c "DROP DATABASE nextcloud_db;"
-sudo -Hiu postgres psql -c "CREATE DATABASE nextcloud_db WITH OWNER ncadmin TEMPLATE template0 ENCODING \"UTF8\";"
+sudo -Hiu postgres psql -c "CREATE DATABASE nextcloud_db WITH OWNER nextcloudusr TEMPLATE template0 ENCODING \"UTF8\";"
 if [ -f "$SCRIPTS/nextclouddb.sql" ]
 then
     if ! sudo -Hiu postgres psql nextcloud_db < "$SCRIPTS/nextclouddb.sql"

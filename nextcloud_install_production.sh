@@ -33,7 +33,7 @@ SCRIPT_NAME="Nextcloud Install Script"
 SCRIPT_EXPLAINER="This script is installing all requirements that are needed for Nextcloud to run.
 It's the first of two parts that are necessary to finish your customized Nextcloud installation."
 # shellcheck source=lib.sh
-source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source <(curl -sL https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master/lib.sh)
 
 # Check for errors + debug code and abort if something isn't right
 # 1 = ON
@@ -1022,7 +1022,7 @@ if asuspn51
 then
     # Upgrade Realtek drivers
     print_text_in_color "$ICyan" "Upgrading Realtek firmware..."
-    curl_to_dir https://raw.githubusercontent.com/nextcloud/vm/master/network/asusnuc pn51.sh "$SCRIPTS"
+    curl_to_dir https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master/network/asusnuc pn51.sh "$SCRIPTS"
     bash "$SCRIPTS"/pn51.sh
 fi
 
@@ -1043,7 +1043,7 @@ fi
 # It has to be this order:
 # Download scripts
 # chmod +x
-# Set permissions for ncadmin in the change scripts
+# Set permissions for nextcloudusr in the change scripts
 
 print_text_in_color "$ICyan" "Getting scripts from GitHub to be able to run the first setup..."
 
@@ -1069,7 +1069,7 @@ chmod +x -R "$SCRIPTS"
 chown root:root -R "$SCRIPTS"
 
 # Prepare first bootup
-check_command run_script STATIC change-ncadmin-profile
+check_command run_script STATIC change-nextcloudusr-profile
 check_command run_script STATIC change-root-profile
 
 # Disable hibernation

@@ -6,7 +6,7 @@ This subrepo contains all the Vagrant config to get an Ubuntu 20.04 VM with the 
 # Setup
 `vagrant up` will install everything
 
-Go to [https://localhost:8080/](https://localhost:8080/) and access Nextcloud with credentials `ncadmin / nextcloud`
+Go to [https://localhost:8080/](https://localhost:8080/) and access Nextcloud with credentials `nextcloudusr / nextcloud`
 
 # Information
 - `VagrantFile` contains instructions to run an inline script: `install.sh`
@@ -14,7 +14,7 @@ Go to [https://localhost:8080/](https://localhost:8080/) and access Nextcloud wi
     - Clones https://github.com/nextcloud/vm
     - Runs `yes no | sudo bash nextcloud_install_production.sh` which uses the default values for each prompt
 
-See https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh for default values.
+See https://raw.githubusercontent.com/mauriziofonte/nextcloud-installer-mod/master/lib.sh for default values.
 
 # Special thanks to
 @gjgd for providing https://github.com/gjgd/vagrant-nextcloud which this is based upon
