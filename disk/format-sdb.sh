@@ -49,7 +49,7 @@ then
     DEVTYPE=vdb
 elif [ "$SYSVENDOR" == "ASUSTeK COMPUTER INC." ];
 then
-    SYSNAME="DigitalOcean"
+    SYSNAME="Asus PN51"
     DEVTYPE=sda
 elif [ "$SYSVENDOR" == "DigitalOcean" ];
 then
